@@ -173,10 +173,10 @@
 <div class="matchModal" class="d-flex justify-content-center">
     <div id="matchModal" class="modal fade" role="dialog" >
         <div class="modal-dialog" role="content">
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 500px;  margin-left:auto; margin-right:auto;">
                 <div class="modal-header" style="background:black;">
-                    <h1 class="modal-title" style="color:dodgerblue;"> Your New Best Friend</h1>
-                    <button id="clearButton" type="button" class="close" data-dismiss="modal" style="color:dodgerblue;">&times;</button>
+                    <h1 class="modal-title" style="color:dodgerblue;float: left;"> Your New '80s' Friend</h1>
+                    <button id="clearButton" type="button" class="close" data-dismiss="modal" style="color:dodgerblue; float: right;">&times;</button>
                 </div>
                 <div class="modal-body" style="width:500px; background-color:#323232">
                     <div class="d-flex justify-content-center">
@@ -184,12 +184,12 @@
                             <div class="row row-content" style="width:450px;">
                                 <div class="col" style="width:450px;">
                                     <div class="modal-body" style="text-align: left; color:dodgerblue; width:450px;">
-                                        <h2 id="match-name"></h2>
-                                        <img id="match-img" style="width:420px">
+                                        <h2 id="match-name" style="margin-top:-20px;"></h2>
+                                        <img id="match-img" style="width:420px" alt="The person you match best with didn't post a photo.">
                                     
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal" style="color:dodgerblue;">Close</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" style="color:dodgerblue; background-color: black;">Close</button>
                                     </div>
 
                                 </div>
@@ -387,6 +387,8 @@
 
                                     console.log("Relevant stats " + matchedName + " " + matchedPhoto)
 
+                                    var percentMatch = (100 - minimum);
+
 
 
 
@@ -400,13 +402,15 @@
                                         var getDiv = $("#match-name");
 
                                         // Creating and storing a div tag
+                                        var percentDiv = $("<div>");
                                         var sportsDiv = $("<div>");
 
                                         // Creating a paragraph tag with the result item's rating
-
-                                        var p = $("<p>").text("'Hi! I am " + matchedName +"'.");
-
+                                        var pp = $("<p>").text(percentMatch+"% Match");    
+                                        var p = $("<p>").text("Meet ''" + matchedName +"''");
+                                        percentDiv.append(pp);
                                         sportsDiv.append(p);
+                                        getDiv.append(percentDiv);
                                         getDiv.append(sportsDiv);
 
                                     
