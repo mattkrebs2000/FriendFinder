@@ -242,44 +242,114 @@
 
 
 
-
-                // Create an object for the user"s data
-                var userData = {
-                    name: $("#name").val(),
-                    photo: $("#photo").val(),
-                    scores: [
-                        $("#q1").val(),
-                        $("#q2").val(),
-                        $("#q3").val(),
-                        $("#q4").val(),
-                        $("#q5").val(),
-                        $("#q6").val(),
-                        $("#q7").val(),
-                        $("#q8").val(),
-                        $("#q9").val(),
-                        $("#q10").val()
-                    ]
-
-     
-                };
+            // Create an object for the user"s data
+            var userData = {
+                name: $("#name").val(),
+                photo: $("#photo").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val()
+                ]
 
 
-                    console.log("Data" + userData.name);
-
-                    	var currentURL = window.location.origin;
-
-                // AJAX post the data to the friends API.
-             
-
-                    $.post(currentURL + "/api/friends", userData,
-                        function (data) {
-
-                         
-                           	// if (data == true) {
-                                alert("Yay you are posted!!")
-                            //    }
+            };
 
 
+            console.log("Data from the entry just made" + userData.scores);
+
+            var currentURL = window.location.origin;
+
+            // AJAX post the data to the friends API.
+            var yourEntryScores = userData.scores;
+
+            $.post(currentURL + "/api/friends", userData,
+                function (data) {
+                    var arrayOfDifferences = [];
+                    var totalDifference=0;
+
+                    // if (data == true) {
+                    alert("Yay you are posted!!")
+                    //    }
+
+                    console.log("Data" + data)
+
+                    function getCompData() {
+
+                        var currentURL = window.location.origin;
+
+                        $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+                            .done(function (friendOptions) {
+
+
+
+                                $(document).ready(function () {
+
+
+
+                                    var arr = friendOptions;
+
+
+
+                                    $.each(arr, function (index, value) {
+
+                                        var currentComparison = value.scores;
+
+                                        // alert('Position is : ' + index + '  And  Value is : ' + value.scores);
+
+                                        $.each(currentComparison, function (index, value) {
+
+
+                                          var num1= yourEntryScores[index];
+                                          var num2= currentComparison[index];
+                                          var difference = Math.sqrt((num1-num2)*(num1-num2)); 
+                                          totalDifference = totalDifference + difference;
+                                          
+                                          if (index == 9) {
+                                              arrayOfDifferences.push(totalDifference);
+                                              totalDifference = 0;
+
+
+                                          }else {}
+
+                                           
+
+
+
+
+
+
+
+
+                                        });
+                                               
+
+
+                                    });
+
+
+
+                                    console.log("arrayOfDifferences " + arrayOfDifferences)
+                                });
+
+
+
+                                console.log("friend Options scores " + friendOptions[0].scores)
+                                
+
+                            })
+                            
+
+                    }
+
+                    getCompData();
 
                     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
                     // $("#match-name").text(data.name);
@@ -290,11 +360,11 @@
 
                 });
 
-            });
+        });
 
-        
 
-        
+
+
     </script>
 
 </body>

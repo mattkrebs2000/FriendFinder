@@ -19,6 +19,8 @@ module.exports = function (app) {
 
     app.get('/api/friends', function (req, res) {
         res.json(answersArray);
+
+        console.log("res "+res)
     });
 
    
@@ -43,7 +45,7 @@ module.exports = function (app) {
 
             res.json(true); 
       
-       console.log(answersArray.length);
+       console.log("scores " + req.body);
 
 
         // //need to manipulate this if then when I am finished with everything else

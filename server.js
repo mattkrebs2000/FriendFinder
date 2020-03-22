@@ -43,7 +43,7 @@ require('./app/routing/apiRoutes.js')(app);
 require('./app/routing/htmlRoutes.js')(app);
 
 
-
+console.log("what are you doing")
 
 
 
