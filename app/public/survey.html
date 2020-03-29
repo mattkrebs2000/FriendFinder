@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>FriendFinder</title>
 
-    <!-- Latest compiled and minified CSS & JS -->
+  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -206,31 +206,8 @@
 
 
 
-    <!-- Modal
-    <div id="matchModal" style="width:600px" class="modal fade" role="dialog">
-        <div class="modal-dialog"> -->
-
-            <!-- Modal content-->
-            <!-- <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title"><strong>Your New Best Friend</strong></h2>
-                </div>
-                <div class="modal-body" style="text-align: center;">
-                    <h2 id="match-name"></h2>
-                    <img id="match-img" style="width:100%">
-               
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-
     <script type="text/javascript">
-        // Chosen CSS
+       
         var config = {
             ".chosen-select": {},
             ".chosen-select-deselect": {
@@ -251,35 +228,12 @@
             $(selector).chosen(config[selector]);
         }
 
-        // Capture the form inputs
+       
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
             console.log("hello")
 
-            // // Form validation
-            // function validateForm() {
-            //     var isValid = true;
-            //     $(".form-control").each(function () {
-            //         if ($(this).val() === "") {
-            //             isValid = false;
-            //         }
-            //     });
-
-            //     $(".chosen-select").each(function () {
-
-            //         if ($(this).val() === "") {
-            //             isValid = false;
-            //         }
-            //     });
-            //     return isValid;
-            // }
-            // // If all required fields are filled
-            // if (validateForm()) {
-
-
-
-            // Create an object for the user"s data
             var userData = {
                 name: $("#name").val(),
                 photo: $("#photo").val(),
@@ -304,7 +258,6 @@
 
             var currentURL = window.location.origin;
 
-            // AJAX post the data to the friends API.
             var yourEntryScores = userData.scores;
 
             $.post(currentURL + "/api/friends", userData,
@@ -340,7 +293,6 @@
 
                                         var currentComparison = value.scores;
 
-                                        // alert('Position is : ' + index + '  And  Value is : ' + value.scores);
 
                                         $.each(currentComparison, function (index, value) {
 
@@ -396,16 +348,13 @@
                                     $("#match-name").empty();
 
 
-                                    // Looping through each result item
-                        
-
                                         var getDiv = $("#match-name");
 
-                                        // Creating and storing a div tag
+                        
                                         var percentDiv = $("<div>");
                                         var sportsDiv = $("<div>");
 
-                                        // Creating a paragraph tag with the result item's rating
+                                        
                                         var pp = $("<p>").text(percentMatch+"% Match");    
                                         var p = $("<p>").text("Meet ''" + matchedName +"''");
                                         percentDiv.append(pp);
@@ -418,18 +367,6 @@
                                     
                                         var getImg = $("#match-img");
 
-
-                                          
-
-                                    // sportsImage.addClass("d-block");
-                                    // sportsImage.addClass("img-fluid");
-
-                                    // sportsImage.addClass("changeImage");
-
-
-
-                                    // Setting the src attribute of the image to a property pulled off the result item
-                                    // sportsImage.attr("id", sports+results[i]);
 
                                     getImg.attr("src", matchedPhoto);
 
@@ -453,12 +390,6 @@
 
                     getCompData();
 
-                    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                    // $("#match-name").text(data.name);
-                    // $("#match-img").attr("src", data.photo);
-
-                    // // Show the modal with the best match
-                    // $("#results-modal").modal("toggle");
 
                 });
 
