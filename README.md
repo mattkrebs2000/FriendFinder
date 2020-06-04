@@ -10,9 +10,9 @@ This Node Express.js App interacts with a self-contained API to determine which 
 
 ## Deployment 
 
-This application can be found [here.]()
+This application can be found [here.](https://friendfinderapp2020.herokuapp.com/)
 
 ## User Experience
 
-After the page loads you will see burgers that have already been made and eaten. These are stored in mySQL database. You have the option to make another burger. Then you have the option to eat any of the burgers you have made and also delete ("poop") burgers that have been eaten.  
+In this App you are asked to fill out a survey which is meant to assess what kind of person you are. That information is compared against the '80's characters in a JSON file. The 80's character who has answers that are closest to yours is determined to be your best 80's match. 
 
